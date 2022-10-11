@@ -14,9 +14,12 @@ public class Individual extends TaxPayer{
 
     private Double healthExpenditures;
 
-    public Individual(Long id, String name, String email, Double anualIncoming, String password, Double healthExpenditures) {
+    private Double taxPaid;
+
+    public Individual(Long id, String name, String email, Double anualIncoming, String password, Double healthExpenditures, Double taxPaid) {
         super(id, name, email, anualIncoming, password);
         this.healthExpenditures = healthExpenditures;
+        this.taxPaid = taxPaid;
     }
-    
+
 }
