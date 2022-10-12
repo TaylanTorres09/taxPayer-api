@@ -26,8 +26,9 @@ public class IndividualService {
         return new ResponseEntity<Individual>(ir.save(individual), HttpStatus.OK);
     }
 
-    public ResponseEntity<String> removeIndividual(Long id) {
-        ir.deleteById(id);
+    public ResponseEntity<String> removeIndividual(String id) {
+        Long longId = Long.parseLong(id);
+        ir.deleteById(longId);
 
         return new ResponseEntity<String>("Produto " + id + " removido com sucesso", HttpStatus.OK);
     }
