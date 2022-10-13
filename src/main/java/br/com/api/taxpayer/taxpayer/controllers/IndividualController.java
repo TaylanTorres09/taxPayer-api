@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.taxpayer.taxpayer.models.Individual;
+import br.com.api.taxpayer.taxpayer.models.components.UpdateIndividual;
 import br.com.api.taxpayer.taxpayer.services.IndividualService;
 
 @RestController
@@ -39,13 +40,12 @@ public class IndividualController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<?> updateIndividual(@Valid @RequestBody Individual individual, @PathVariable String id, BindingResult bindingResult) {
+    public ResponseEntity<?> updateIndividual(@Valid @RequestBody UpdateIndividual updateIndividual, @PathVariable String id, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<FieldError>(bindingResult.getFieldError(), HttpStatus.BAD_REQUEST);
         }
-        Long longId = Long.parseLong(id);
-        individual.setId(longId);
-        return individualService.updateIndividual(individual);
+
+        return individualService.updateIndividual(updateIndividual, id);
     }
 
     @DeleteMapping("remove/{id}")
