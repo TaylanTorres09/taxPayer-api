@@ -1,6 +1,5 @@
 package br.com.api.taxpayer.taxpayer.services;
 
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
