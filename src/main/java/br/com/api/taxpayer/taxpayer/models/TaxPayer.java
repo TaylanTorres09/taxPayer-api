@@ -12,12 +12,14 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @MappedSuperclass
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class TaxPayer implements Serializable {
     
     private static final long serialVersionUID = 1L;
