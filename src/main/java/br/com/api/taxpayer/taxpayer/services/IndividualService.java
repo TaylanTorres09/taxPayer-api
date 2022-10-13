@@ -1,5 +1,6 @@
 package br.com.api.taxpayer.taxpayer.services;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.api.taxpayer.taxpayer.models.Individual;
+import br.com.api.taxpayer.taxpayer.models.components.UpdateIndividual;
 import br.com.api.taxpayer.taxpayer.repositories.IndividualRepository;
 import br.com.api.taxpayer.taxpayer.utils.Regex;
 
@@ -58,7 +60,13 @@ public class IndividualService {
         return new ResponseEntity<Individual>(ir.save(individual), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> updateIndividual(Individual individual) {
+    public ResponseEntity<?> updateIndividual(UpdateIndividual updateIndividual, String id) {
+        Long longId = Long.parseLong(id);
+        Individual individual = ir.getReferenceById(longId);
+
+        individual.setAnualIncoming(updateIndividual.getAnualIncoming());
+        individual.setHealthExpenditures(updateIndividual.getHealthExpenditures());
+
         return new ResponseEntity<Individual>(ir.save(individual), HttpStatus.OK);
     }
 
