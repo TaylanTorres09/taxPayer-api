@@ -27,6 +27,12 @@ public class CompanyService {
 
     public ResponseEntity<?> registerCompany(Company company) {
 
+        if (companyRepository.existsByName(company.getName())) {
+            return new ResponseEntity<String>("Nome existente", HttpStatus.BAD_REQUEST);
+        } else if (companyRepository.existsByEmail(company.getEmail())) {
+            return new ResponseEntity<String>("Email existente", HttpStatus.BAD_REQUEST);
+        }
+
         // Validate e-mail
         Pattern patternEmail = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         Matcher matchEmail = patternEmail.matcher(company.getEmail());
