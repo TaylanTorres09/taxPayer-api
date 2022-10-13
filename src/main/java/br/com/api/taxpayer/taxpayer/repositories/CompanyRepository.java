@@ -7,5 +7,9 @@ import br.com.api.taxpayer.taxpayer.models.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
+
+    Boolean existsByName(String name);
+
+    Boolean existsByEmail(String email);
     
 }
