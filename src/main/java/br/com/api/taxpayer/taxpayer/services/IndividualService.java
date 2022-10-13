@@ -54,7 +54,6 @@ public class IndividualService {
             individual.setTaxPaid(individual.getAnualIncoming() * 0.15 - healthTax);
         } else {
             individual.setTaxPaid(individual.getAnualIncoming() * 0.25 - healthTax);
-
         }
         return new ResponseEntity<Individual>(ir.save(individual), HttpStatus.CREATED);
     }
@@ -65,6 +64,13 @@ public class IndividualService {
 
         individual.setAnualIncoming(updateIndividual.getAnualIncoming());
         individual.setHealthExpenditures(updateIndividual.getHealthExpenditures());
+
+        Double healthTax = individual.getHealthExpenditures() * 0.5;
+        if(individual.getAnualIncoming() < 20000.00) {
+            individual.setTaxPaid(individual.getAnualIncoming() * 0.15 - healthTax);
+        } else {
+            individual.setTaxPaid(individual.getAnualIncoming() * 0.25 - healthTax);
+        }
 
         return new ResponseEntity<Individual>(ir.save(individual), HttpStatus.OK);
     }
