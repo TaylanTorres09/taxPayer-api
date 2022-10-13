@@ -63,7 +63,14 @@ public class CompanyService {
         Company company = companyRepository.getReferenceById(longId);
 
         company.setAnualIncoming(updateCompany.getAnualIncoming());
-        company.setNumbersOfEmployees(updateCompany.getNumbersOfEmployees());;
+        company.setNumbersOfEmployees(updateCompany.getNumbersOfEmployees());
+
+        if(company.getNumbersOfEmployees() > 10) {
+            company.setTaxPaid(company.getAnualIncoming() * 0.14);
+        } else {
+            company.setTaxPaid(company.getAnualIncoming() * 0.16);
+        }
+
 
         return new ResponseEntity<Company>(companyRepository.save(company), HttpStatus.OK);
     }
