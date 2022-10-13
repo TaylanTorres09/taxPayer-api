@@ -29,7 +29,7 @@ public class IndividualService {
 
     public ResponseEntity<?> registerIndividual(Individual individual) {
 
-        if (ir.existisByName(individual.getName())) {
+        if (ir.existsByName(individual.getName())) {
             return new ResponseEntity<String>("Nome existente", HttpStatus.BAD_REQUEST);
         } else if (ir.existsByEmail(individual.getEmail())) {
             return new ResponseEntity<String>("Email existente", HttpStatus.BAD_REQUEST);

@@ -8,7 +8,7 @@ import br.com.api.taxpayer.taxpayer.models.Individual;
 @Repository
 public interface IndividualRepository extends JpaRepository<Individual, Long>{
 
-    Boolean existisByName(String name);
+    Boolean existsByName(String name);
 
     Boolean existsByEmail(String email);
     
