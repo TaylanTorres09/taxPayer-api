@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.api.taxpayer.taxpayer.models.Company;
+import br.com.api.taxpayer.taxpayer.models.components.UpdateCompany;
 import br.com.api.taxpayer.taxpayer.repositories.CompanyRepository;
 import br.com.api.taxpayer.taxpayer.utils.Regex;
 
@@ -51,7 +52,13 @@ public class CompanyService {
         return new ResponseEntity<Company>(companyRepository.save(company), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> updateCompany(Company company) {
+    public ResponseEntity<?> updateCompany(UpdateCompany updateCompany, String id) {
+        Long longId = Long.parseLong(id);
+        Company company = companyRepository.getReferenceById(longId);
+
+        company.setAnualIncoming(updateCompany.getAnualIncoming());
+        company.setNumbersOfEmployees(updateCompany.getNumbersOfEmployees());;
+
         return new ResponseEntity<Company>(companyRepository.save(company), HttpStatus.OK);
     }
 
