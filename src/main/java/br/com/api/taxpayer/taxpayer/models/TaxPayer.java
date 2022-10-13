@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +31,8 @@ public abstract class TaxPayer implements Serializable {
     
     @NotEmpty(message = "Email é obrigatório")
     private String email;
-
-    @NotBlank
+    
+    @NotNull
     private Double anualIncoming;
 
     @NotBlank
