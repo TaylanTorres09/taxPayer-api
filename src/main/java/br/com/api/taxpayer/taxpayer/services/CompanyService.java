@@ -49,6 +49,12 @@ public class CompanyService {
             return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
         }
 
+        if(company.getNumbersOfEmployees() > 10) {
+            company.setTaxPaid(company.getNumbersOfEmployees() * 0.14);
+        } else {
+            company.setTaxPaid(company.getNumbersOfEmployees() * 0.16);
+        }
+
         return new ResponseEntity<Company>(companyRepository.save(company), HttpStatus.CREATED);
     }
 
