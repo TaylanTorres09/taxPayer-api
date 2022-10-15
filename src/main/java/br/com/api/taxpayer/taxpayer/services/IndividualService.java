@@ -37,15 +37,9 @@ public class IndividualService {
         // Validate e-mail
         Pattern patternEmail = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         Matcher matchEmail = patternEmail.matcher(individual.getEmail());
-        // Validate Password
-        Pattern patternPass = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
-        Matcher matchPass = patternPass.matcher(individual.getPassword());
 
         if(!matchEmail.find()) {
             String message = regex.regexEmail();
-            return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
-        } else if(!matchPass.find()){
-            String message = regex.regexPassowrd();
             return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
         }
 

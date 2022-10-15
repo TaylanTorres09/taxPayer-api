@@ -23,22 +23,4 @@ public class Regex {
         String msg = sb.toString();
         return msg;
     }
-    
-    public String regexPassowrd() {
-        String[] message = {
-            "A senha deve conter: ",
-            "Pelo menos um dígito [0-9].",
-            "Pelo menos um caractere latino minúsculo [az].",
-            "Pelo menos um caractere latino maiúsculo [AZ].",
-            "Pelo menos um caractere especial como ! @ # & ( ).",
-            "No mínimo 8 caracteres e no máximo 20 caracteres."
-        };
-        StringBuilder sb = new StringBuilder();
-        for (String line: message) {
-            sb.append(line).append(System.lineSeparator());
-        }
-        String msg = sb.toString();
-        return msg;
-    }
-
 }

@@ -37,7 +37,4 @@ public abstract class TaxPayer implements Serializable {
     @NotNull
     private Double anualIncoming;
 
-    @NotBlank
-    private String password;
-
 }

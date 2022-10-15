@@ -18,8 +18,8 @@ public class Company extends TaxPayer {
     
     private Double taxPaid;
 
-    public Company(Long id, String name, String email, Double anualIncoming, String password, Integer numbersOfEmployees, Double taxPaid) {
-        super(id, name, email, anualIncoming, password);
+    public Company(Long id, String name, String email, Double anualIncoming, Integer numbersOfEmployees, Double taxPaid) {
+        super(id, name, email, anualIncoming);
         this.numbersOfEmployees = numbersOfEmployees;
         this.taxPaid = taxPaid;
     }
