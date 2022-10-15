@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
+import br.com.api.taxpayer.taxpayer.enums.StatusEmail;
 import lombok.Data;
 
 @Data
@@ -36,5 +37,7 @@ public class Email implements Serializable {
     private String text;
 
     private LocalDateTime sendDateEmail;
+
+    private StatusEmail statusEmail;
 
 }
