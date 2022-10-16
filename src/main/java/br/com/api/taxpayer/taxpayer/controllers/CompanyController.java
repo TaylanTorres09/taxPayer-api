@@ -1,5 +1,7 @@
 package br.com.api.taxpayer.taxpayer.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,11 @@ public class CompanyController {
     @GetMapping
     public Iterable<Company> listAll() {
         return companyService.listAll();
+    }
+
+    @GetMapping("/{name}")
+    public List<Company> findByName(@PathVariable String name) {
+        return companyService.findByName(name);
     }
 
     @PostMapping("/register")
