@@ -38,9 +38,10 @@ public class EmailService {
 
     public ResponseEntity<?> sendEmail(Email email) {
         email.setSendDateEmail(LocalDateTime.now());
+        email.setEmailFrom("taylan.job@gmail.com");
         try{
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("taylan.job@gmail.com");
+            message.setFrom(email.getEmailFrom());
             message.setTo(email.getEmailTo());
             message.setSubject(email.getSubject());
 
@@ -55,6 +56,8 @@ public class EmailService {
             } else {
                 message.setText("OBS: Reveja o nome do proprietário.");
             }
+
+            email.setText(message.getText());
 
             javaMailSender.send(message);
 
