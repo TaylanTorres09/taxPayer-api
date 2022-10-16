@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.api.taxpayer.taxpayer.enums.StatusEmail;
+import br.com.api.taxpayer.taxpayer.enums.WhoTaxPayer;
 import lombok.Data;
 
 @Data
@@ -36,6 +37,8 @@ public class Email implements Serializable {
     private String text;
 
     private LocalDateTime sendDateEmail;
+
+    private WhoTaxPayer whoTaxPayer;
 
     private StatusEmail statusEmail;
 
