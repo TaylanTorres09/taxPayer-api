@@ -32,6 +32,11 @@ public class IndividualController {
         return individualService.listAll();
     }
 
+    @GetMapping("/{name}")
+    public Iterable<Individual> findByName(@PathVariable String name) {
+        return individualService.findByName(name);
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> resgisterIndividual(@Valid @RequestBody Individual individual, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
