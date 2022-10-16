@@ -1,5 +1,6 @@
 package br.com.api.taxpayer.taxpayer.services;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,6 +25,10 @@ public class IndividualService {
 
     public Iterable<Individual> listAll() {
         return ir.findAll();
+    }
+
+    public List<Individual> findByName(String name) {
+        return ir.findByName(name);
     }
 
     public ResponseEntity<?> registerIndividual(Individual individual) {
