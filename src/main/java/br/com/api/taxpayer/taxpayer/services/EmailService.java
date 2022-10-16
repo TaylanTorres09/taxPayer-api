@@ -46,10 +46,12 @@ public class EmailService {
 
            if(email.getWhoTaxPayer().toString().equals("COMPANY")) {
                 List<Company> company = companyService.findByName(email.getOwnerRef());
-                message.setText("Imposto de Renda Total: " + company.get(0).getTaxPaid().toString());
+                String tax = company.isEmpty() ? "Reveja o nome do proprietário" : company.get(0).getTaxPaid().toString();
+                message.setText("Imposto de Renda Total: " + tax);
             } else if(email.getWhoTaxPayer().toString().equals("INDIVIDUAL")) {
                 List<Individual> individual = individualService.findByName(email.getOwnerRef());
-                message.setText("Imposto de Renda Total: " + individual.get(0).getTaxPaid().toString());
+                String tax = individual.isEmpty() ? "Reveja o nome do proprietário" : individual.get(0).getTaxPaid().toString();
+                message.setText("Imposto de Renda Total: " + tax);
             } else {
                 message.setText("OBS: Reveja o nome do proprietário.");
             }
