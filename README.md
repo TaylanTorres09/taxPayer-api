@@ -44,7 +44,7 @@ O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visu
 ```
 - Listar: /individual [Get]
 - Encontrar por nome: /individual/{name} [Get]
-- Atualizar: /individual/{id} [Put] Abaixo segue request:
+- Atualizar: /individua/update/{id} [Put] Abaixo segue request:
 ``` Json Body
 {
     "anualIncoming": "double",
@@ -65,7 +65,7 @@ O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visu
 ```
 - Listar: /company [Get]
 - Encontrar por nome: /company/{name} [Get]
-- Atualizar: /company/{id} [Put] Abaixo segue request:
+- Atualizar: /company/update/{id} [Put] Abaixo segue request:
 ``` Json Body
 {
     "anualIncoming": "double",
@@ -75,31 +75,24 @@ O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visu
 - Remover: /company/remove/{id} [Delete]
 
 #### Para Email:
-- Enviar: /company/register [Post] Abaixo segue request:
+- Enviar: /email/sending [Post] Abaixo segue request:
 ``` Json Body
 {
-    "name": "string",
-    "email": "string",
-    "anualIncoming": "double",
-    "numbersOfEmployees": "integer",
+    // Proprietário - atribute name
+    "ownerRef": "string",
+    "emailTo": "string",
+    "subject": "string",
+    // INDIVIDUAL (Pessoa Física) ou COMPANY (Pessoa Jurídica)
+    "whoTaxPayer": "string",
 }
 ```
-- Listar: /company [Get]
-- Encontrar por nome: /company/{name} [Get]
-- Atualizar: /company/{id} [Put] Abaixo segue request:
-``` Json Body
-{
-    "anualIncoming": "double",
-    "numbersOfEmployees": "integer",
-}
-```
-- Remover: /company/remove/{id} [Delete]
+- Listar: /email/listAll [Get]
 
 ### Descrição - Executar Api localmente:
-- Para clonar o projeto: git clone https://github.com/TaylanTorres09/products-back.git
+- Para clonar o projeto: git clone https://github.com/TaylanTorres09/taxPayer-api
 - Para Executar o projeto precisasse:
     - Java [JDK](https://www.oracle.com/java/technologies/downloads/#java17). Este projeto está usando a versão 17.
-    - Banco [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register).
+    - Banco [H2](https://www.h2database.com/html/main.html) utilizado em memória.
 
 - Extensões do vscode utilizadas:
     - [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=redhat.java)

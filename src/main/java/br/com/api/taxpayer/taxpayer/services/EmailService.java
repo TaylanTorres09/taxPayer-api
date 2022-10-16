@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
@@ -32,9 +33,12 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Value("${spring.mail.username}")
+	private String emailFrom;
+
     public ResponseEntity<?> sendEmail(Email email) {
         email.setSendDateEmail(LocalDateTime.now());
-        email.setEmailFrom("taylan.job@gmail.com");
+        email.setEmailFrom(emailFrom);
         try{
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(email.getEmailFrom());
