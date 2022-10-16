@@ -2,10 +2,6 @@ package br.com.api.taxpayer.taxpayer.services;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import javax.el.ELManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
