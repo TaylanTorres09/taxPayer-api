@@ -1,5 +1,6 @@
 package br.com.api.taxpayer.taxpayer.services;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,6 +25,10 @@ public class CompanyService {
 
     public Iterable<Company> listAll() {
         return companyRepository.findAll();
+    }
+
+    public List<Company> findByName(String name) {
+        return companyRepository.findByName(name);
     }
 
     public ResponseEntity<?> registerCompany(Company company) {
