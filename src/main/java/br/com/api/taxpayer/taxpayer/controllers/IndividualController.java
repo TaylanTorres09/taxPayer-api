@@ -54,7 +54,7 @@ public class IndividualController {
         return individualService.updateIndividual(updateIndividual, id);
     }
 
-    @DeleteMapping("remove/{id}")
+    @DeleteMapping("/remove/{id}")
     public ResponseEntity<String> removeIndividual(@PathVariable String id) {
         return individualService.removeIndividual(id);
     }

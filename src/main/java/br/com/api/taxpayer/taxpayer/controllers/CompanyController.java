@@ -56,7 +56,7 @@ public class CompanyController {
         return companyService.updateCompany(updateCompany, id);
     }
 
-    @DeleteMapping("remove/{id}")
+    @DeleteMapping("/remove/{id}")
     public ResponseEntity<String> removeCompany(@PathVariable String id) {
         return companyService.removeCompany(id);
     }
