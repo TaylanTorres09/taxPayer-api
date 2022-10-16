@@ -1,6 +1,10 @@
 package br.com.api.taxpayer.taxpayer.services;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.el.ELManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +43,10 @@ public class EmailService {
             email.setStatusEmail(StatusEmail.ERROR);
             return new ResponseEntity<StatusEmail>(StatusEmail.ERROR, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public Iterable<Email> findAll() {
+        return emailRepository.findAll();
     }
 
 }
