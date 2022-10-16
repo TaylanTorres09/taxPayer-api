@@ -99,9 +99,13 @@ O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visu
     - [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack)
     - [Lombok Annotations Support for VS Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-lombok)
 
-- Na pasta src/main, execute o arquivo PaymentApplication.java
+- Nos campos vazios de **username** e **password** siga o tutorial da google: https://support.google.com/accounts/answer/185833 / Coloque se usuário de email e a senha de 16 digitos geradas.
 
-![ProductsApplication](Img_README/ProductsApplication.png)
+![ApplicationProperties](README_IMG/ApplicationProperties.png)
+
+- Na pasta src/main, execute o arquivo TaxpayerApplication.java
+
+![TaxpayerApplication](README_IMG/TaxpayerApplication.png)
 
 - Para testar a api você pode utilizar ferramentas de client como:
     - [Postman](https://www.postman.com/)
@@ -110,8 +114,9 @@ O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visu
     - Ou outra de sua preferência.
 
 ### Próximos Passos
-- Ainda no cadastro fazer verificação por email com geração de código de validação | serviços de mensageria.
+- Ainda no cadastro fazer verificação por email com geração de código de validação.
 - Criar sessão por usuário.
+- Fazer interfaces no front-end.
 
 ## Autor
 <a href="https://www.linkedin.com/in/taylan-torres" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
