@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.taxpayer.taxpayer.dto.EmailDto;
+import br.com.api.taxpayer.taxpayer.enums.WhoTaxPayer;
 import br.com.api.taxpayer.taxpayer.models.Email;
 import br.com.api.taxpayer.taxpayer.services.EmailService;
 
@@ -26,6 +27,7 @@ public class EmailController {
     public ResponseEntity<?> sendEmail(@RequestBody @Valid EmailDto emailDto) {
         Email email = new Email();
         BeanUtils.copyProperties(emailDto, email);
+        email.setWhoTaxPayer(WhoTaxPayer.valueOf(emailDto.getWhoTaxPayer()));
         return emailService.sendEmail(email);
     }
 
