@@ -18,4 +18,7 @@ public class EmailDto {
     @NotBlank
     private String subject;
 
+    @NotBlank
+    private String whoTaxPayer;
+
 }
