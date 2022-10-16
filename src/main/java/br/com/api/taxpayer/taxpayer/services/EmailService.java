@@ -1,6 +1,7 @@
 package br.com.api.taxpayer.taxpayer.services;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,7 +16,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import br.com.api.taxpayer.taxpayer.enums.StatusEmail;
+import br.com.api.taxpayer.taxpayer.models.Company;
 import br.com.api.taxpayer.taxpayer.models.Email;
+import br.com.api.taxpayer.taxpayer.models.Individual;
 import br.com.api.taxpayer.taxpayer.repositories.EmailRepository;
 
 @Service
@@ -25,16 +28,32 @@ public class EmailService {
     private EmailRepository emailRepository;
 
     @Autowired
+    private CompanyService companyService;
+    
+    @Autowired
+    private IndividualService individualService;
+
+    @Autowired
     private JavaMailSender javaMailSender;
 
     public ResponseEntity<?> sendEmail(Email email) {
         email.setSendDateEmail(LocalDateTime.now());
         try{
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(email.getEmailFrom());
+            message.setFrom("taylan.job@gmail.com");
             message.setTo(email.getEmailTo());
             message.setSubject(email.getSubject());
-            message.setText(email.getText());
+
+           if(email.getWhoTaxPayer().toString().equals("COMPANY")) {
+                List<Company> company = companyService.findByName(email.getOwnerRef());
+                message.setText("Imposto de Renda Total: " + company.get(0).getTaxPaid().toString());
+            } else if(email.getWhoTaxPayer().toString().equals("INDIVIDUAL")) {
+                List<Individual> individual = individualService.findByName(email.getOwnerRef());
+                message.setText("Imposto de Renda Total: " + individual.get(0).getTaxPaid().toString());
+            } else {
+                message.setText("OBS: Reveja o nome do proprietário.");
+            }
+
             javaMailSender.send(message);
 
             email.setStatusEmail(StatusEmail.SENT);
