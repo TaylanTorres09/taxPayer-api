@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import br.com.api.taxpayer.taxpayer.enums.StatusEmail;
+import br.com.api.taxpayer.taxpayer.enums.WhoTaxPayer;
 import br.com.api.taxpayer.taxpayer.models.Company;
 import br.com.api.taxpayer.taxpayer.models.Email;
 import br.com.api.taxpayer.taxpayer.models.Individual;
@@ -45,16 +46,20 @@ public class EmailService {
             message.setTo(email.getEmailTo());
             message.setSubject(email.getSubject());
 
-           if(email.getWhoTaxPayer().toString().equals("COMPANY")) {
-                List<Company> company = companyService.findByName(email.getOwnerRef());
-                String tax = company.isEmpty() ? "Reveja o nome do proprietário" : company.get(0).getTaxPaid().toString();
-                message.setText("Imposto de Renda Total: " + tax);
-            } else if(email.getWhoTaxPayer().toString().equals("INDIVIDUAL")) {
-                List<Individual> individual = individualService.findByName(email.getOwnerRef());
-                String tax = individual.isEmpty() ? "Reveja o nome do proprietário" : individual.get(0).getTaxPaid().toString();
-                message.setText("Imposto de Renda Total: " + tax);
-            } else {
-                message.setText("OBS: Reveja o nome do proprietário.");
+            String whoTaxPayer = email.getWhoTaxPayer() != null ? email.getWhoTaxPayer().toString() : "";
+            switch (whoTaxPayer) {
+                case "COMPANY":
+                    List<Company> company = companyService.findByName(email.getOwnerRef());
+                    String taxCompany = company.isEmpty() ? "Reveja o nome do proprietário" : company.get(0).getTaxPaid().toString();
+                    message.setText("Imposto de Renda Total: " + taxCompany);
+                    break;
+                case "INDIVIDUAL":
+                    List<Individual> individual = individualService.findByName(email.getOwnerRef());
+                    String taxIndividual = individual.isEmpty() ? "Reveja o nome do proprietário" : individual.get(0).getTaxPaid().toString();
+                    message.setText("Imposto de Renda Total: " + taxIndividual);
+                    break;
+                default:
+                    message.setText("OBS: Reveja o nome do proprietário.");
             }
 
             email.setText(message.getText());
