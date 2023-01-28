@@ -2,18 +2,15 @@
 
 ## Descrição Geral
 
-Projeto inspirado em uma atividade da aula 166 do curso [Java COMPLETO Programação Orientada a Objetos +Projetos
-](https://www.udemy.com/course/java-curso-completo/), ministrado pelo professor Nélio Alves.
-
-<p>Projeto adaptado com o intuito do estudo do framework Spring Boot e também sobre serviço de mensageria para envio de email.</p>
-
-### Descrição do projeto:
-
 Api para realizar cadastro de atributos que podem ser pessoa física *Individual* ou pessoa jurídica *Company*, e depois mostrar o valor do imposto pago por cada.
 
 Os dados de pessoa física são: nome, renda anual e gastos com saúde.
 
 Os dados de pessoa jurídica são nome, renda anual e número de funcionários.
+
+<p>Projeto adaptado com o intuito do estudo do framework Spring Boot e também sobre serviço de mensageria para envio de email.</p>
+
+### Descrição do projeto:
 
 As regras para cálculo de imposto são as seguintes:
 
@@ -28,6 +25,9 @@ Exemplo: uma empresa cuja renda foi 400000.00 e possui 25 funcionários, o impos
 
 
 O projeto consiste em fazer uma api utilizando o [Spring Boot](https://code.visualstudio.com/docs/java/java-spring-boot) com todas as relações **CRUD** e também um serviço de mesageria para **envio de email** do valor total do imposto.
+
+Projeto inspirado em uma atividade da aula 166 do curso [Java COMPLETO Programação Orientada a Objetos +Projetos
+](https://www.udemy.com/course/java-curso-completo/), ministrado pelo professor Nélio Alves.
 
 ### EndPoints do projeto:
 - Lista de endPoints: / [GET]
